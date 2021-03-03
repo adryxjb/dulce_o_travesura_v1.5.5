@@ -9,6 +9,10 @@ import { ContactoComponent } from "./components/contacto/contacto.component";
 import { ApiComponent } from "./components/api/api.component";
 import { UsuariosComponent } from "./components/usuarios/usuarios.component";
 import { RecetasComponent } from "./components/recetas/recetas.component";
+import { AdministracionComponent } from "./components/administracion/administracion.component";
+import { LoginComponent } from "./components/login/login.component";
+import { AuthGuard } from "./services/auth-guard.service";
+
 //Rutas
 const appRoutes: Routes = [
   //Para rutas vacias
@@ -20,6 +24,12 @@ const appRoutes: Routes = [
   { path: "api", component: ApiComponent },
   { path: "usuarios/:id", component: UsuariosComponent },
   { path: "recetas", component: RecetasComponent },
+  {
+    path: "administracion",
+    component: AdministracionComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "login", component: LoginComponent },
   //Cuando se introduce una ruta que no existe:
   { path: "**", component: HomeComponent }
 ];
